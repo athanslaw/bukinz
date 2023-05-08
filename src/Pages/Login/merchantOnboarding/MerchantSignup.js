@@ -1,9 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
 import { Formik } from 'formik';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthContext';
-import { login } from '../../../lib/url.js';
-import { apiRequest, logout } from '../../../lib/api.js';
 import { showToast } from '../../../helpers/showToast';
+import { apiRequest, logout } from '../../../lib/api.js';
+import { login } from '../../../lib/url.js';
 import { ReactComponent as BarChart } from '../../../shared/assets/bar-chart.svg';
 import Loader from '../../../shared/components/Loader';
 import SideBar from '../../../shared/components/SideBar';
@@ -47,7 +48,7 @@ const MerchantSignup = ({ history, location }) => {
                 : <div className="xl:w-7/10 lg:w-9/12 relative">
                 <span className="absolute -left-48 -top-24"><BarChart /></span>
 
-                <div className="shadow-sm p-8 md:p-16 bg-white rounded-lg justify-center">
+                <div className="shadow-sm p-8 md:p-6 bg-white rounded-lg justify-center">
                         <Formik
                             initialValues={{ username: '', password: '' }}
                             validate={values => {
@@ -147,6 +148,7 @@ const MerchantSignup = ({ history, location }) => {
                                     <button type="submit" disabled={isSubmitting || errors.password?.length > 0 || errors.username?.length > 0} className="w-full bg-primary m-auto py-3 sm:py-3 text-white font-bold rounded-l focus:outline-none">
                                         Sign Up
                                     </button>
+                                    <span className="w-full m-auto py-2 sm:py-2 text-primary">Already registered? <strong><Link to="/login">Login</Link></strong></span>
                                 </form>
                             )}
                         </Formik>

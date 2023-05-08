@@ -1,19 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from '../contexts/AuthContext';
-import AgentIcon from "./assets/icons/AgentIcon";
-import DashboardIcon from "./assets/icons/DahsboardIcon";
 import EmptyIcon from "./assets/icons/EmptyIcon";
-import IncidentIcon from "./assets/icons/IncidentIcon";
-import PartyIcon from "./assets/icons/PartyIcon";
-import ResultIcon from "./assets/icons/ResultIcon";
-import TerritoryIcon from "./assets/icons/TerritoryIcon";
 import UserIcon from "./assets/icons/UserIcon";
 
 const SideNav = ({location}) => {
     
     const [authState] = useContext(AuthContext);
-    let defaultMenuList = [
+
+    defaultMenuList = [
+        {
+            name: 'Users',
+            icon: (active) => <UserIcon active={active}/>,
+            active: false,
+            subMenus: [],
+            path: '/users'
+        },
         {
             name: 'Logout',
             icon: (active) => <EmptyIcon active={active} />,
@@ -22,243 +24,7 @@ const SideNav = ({location}) => {
             path: '/logout'
         }
     ];
-
-    if(authState?.user?.userDetails?.role.toLowerCase()==='administrator'){
-        defaultMenuList = [
-            {
-                name: 'Dashboard',
-                icon: (active) => <DashboardIcon active={active} />,
-                active: true,
-                subMenus: [
-                    {
-                        name: 'Result',
-                        active: false,
-                        path: '/dashboard/results'
-                    },
-                    {
-                        name: 'National Result',
-                        active: false,
-                        path: '/dashboard/resultsNational'
-                    },
-                    {
-                        name: 'Incidents',
-                        active: false,
-                        path: '/dashboard/incidents'
-                    },
-                    {
-                        name: 'Events',
-                        active: false,
-                        path: '/dashboard/events'
-                    }
-                ],
-                path: '/dashboard'
-            },
-            {
-                name: 'Results',
-                icon: (active) => <ResultIcon active={active} />,
-                active: false,
-                subMenus: [],
-                path: '/results'
-            },{
-                name: 'ElectionTypes',
-                icon: (active) => <ResultIcon active={active} />,
-                active: false,
-                subMenus: [],
-                path: '/electionTypes'
-            },
-            {
-                name: 'Incident',
-                icon: (active) => <IncidentIcon active={active} />,
-                active: false,
-                subMenus: [],
-                path: '/incidents'
-            },
-            {
-                name: 'Incident Groups',
-                icon: (active) => <IncidentIcon active={active} />,
-                active: false,
-                subMenus: [],
-                path: '/incident-group'
-            },
-            {
-                name: 'Agents',
-                icon: (active) => <AgentIcon active={active} />,
-                active: false,
-                subMenus: [],
-                path: '/agents'
-            },
-            {
-                name: 'Events',
-                icon: (active) => <IncidentIcon active={active} />,
-                active: false,
-                subMenus: [],
-                path: '/event'
-            },
-            {
-                name: 'Events Tracker',
-                icon: (active) => <IncidentIcon active={active} />,
-                active: false,
-                subMenus: [],
-                path: '/event-records'
-            },
-            {
-                name: 'Territories',
-                icon: (active) => <TerritoryIcon active={active} />,
-                active: false,
-                subMenus: [
-                    {
-                        name: 'States',
-                        active: false,
-                        path: '/territories/states'
-                    },
-                    {
-                        name: 'LGAs',
-                        active: false,
-                        path: '/territories/lgas'
-                    },
-                    {
-                        name: 'Wards',
-                        active: false,
-                        path: '/territories/wards'
-                    },
-                    {
-                        name: 'Polling Unit',
-                        active: false,
-                        path: '/territories/polling-units'
-                    }
-                ],
-                path: '/territories'
-            },
-            {
-                name: 'Users',
-                icon: (active) => <UserIcon active={active}/>,
-                active: false,
-                subMenus: [],
-                path: '/users'
-            },
-            {
-                name: 'Parties',
-                icon: (active) => <PartyIcon active={active}/>,
-                active: false,
-                subMenus: [],
-                path: '/parties'
-            },
-            {
-                name: 'Logout',
-                icon: (active) => <EmptyIcon active={active} />,
-                active: false,
-                subMenus: [],
-                path: '/logout'
-            }
-        ];
-    }
-    else if(authState?.user?.userDetails?.role.toLowerCase()==='executive'){
-        defaultMenuList = [
-            {
-                name: 'Dashboard',
-                icon: (active) => <DashboardIcon active={active} />,
-                active: true,
-                subMenus: [
-                    {
-                        name: 'Result',
-                        active: false,
-                        path: '/dashboard/results'
-                    },
-                    {
-                        name: 'Incidents',
-                        active: false,
-                        path: '/dashboard/incidents'
-                    },
-                    {
-                        name: 'Events',
-                        active: false,
-                        path: '/dashboard/events'
-                    }
-                ],
-                path: '/dashboard'
-            },
-            {
-                name: 'Incident',
-                icon: (active) => <IncidentIcon active={active} />,
-                active: false,
-                subMenus: [],
-                path: '/incidents'
-            },
-            {
-                name: 'Logout',
-                icon: (active) => <EmptyIcon active={active} />,
-                active: false,
-                subMenus: [],
-                path: '/logout'
-            }
-        ];
-    }
-    else if(authState?.user?.userDetails?.role.toLowerCase()==='national executive'){
-        defaultMenuList = [
-            {
-                name: 'Dashboard',
-                icon: (active) => <DashboardIcon active={active} />,
-                active: true,
-                subMenus: [
-                    {
-                        name: 'National Result',
-                        active: false,
-                        path: '/dashboard/resultsNational'
-                    },
-                    {
-                        name: 'Incidents',
-                        active: false,
-                        path: '/dashboard/incidents'
-                    },
-                    {
-                        name: 'Events',
-                        active: false,
-                        path: '/dashboard/events'
-                    }
-                ],
-                path: '/dashboard'
-            },
-            {
-                name: 'Logout',
-                icon: (active) => <EmptyIcon active={active} />,
-                active: false,
-                subMenus: [],
-                path: '/logout'
-            }
-        ];
-    }
-    else if(authState?.user?.userDetails?.role.toLowerCase()==='user'){
-        defaultMenuList = [
-            {
-                name: 'Results',
-                icon: (active) => <ResultIcon active={active} />,
-                active: false,
-                subMenus: [],
-                path: '/results'
-            },
-            {
-                name: 'Incident',
-                icon: (active) => <IncidentIcon active={active} />,
-                active: false,
-                subMenus: [],
-                path: '/incidents'
-            },
-            {
-                name: 'Agents',
-                icon: (active) => <AgentIcon active={active} />,
-                active: false,
-                subMenus: [],
-                path: '/agents'
-            },
-            {
-                name: 'Logout',
-                icon: (active) => <EmptyIcon active={active} />,
-                active: false,
-                subMenus: [],
-                path: '/logout'
-            }
-        ];
-    }
+    
 
     const [menus] = useState(defaultMenuList);
     const [top, setTop] = useState([]);

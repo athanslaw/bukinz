@@ -1,14 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react';
 import { Formik } from 'formik';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../contexts/AuthContext';
-import { login } from '../../../lib/url.js';
-import { apiRequest, logout } from '../../../lib/api.js';
 import { showToast } from '../../../helpers/showToast';
+import { apiRequest, logout } from '../../../lib/api.js';
+import { login } from '../../../lib/url.js';
+import { ReactComponent as BarChart } from '../../../shared/assets/bar-chart.svg';
+import ActivityTracker from '../../../shared/components/ActivityTracker';
 import Loader from '../../../shared/components/Loader';
 import SideBar from '../../../shared/components/SideBar';
 import Select from '../../../shared/components/select';
-import ActivityTracker from '../../../shared/components/ActivityTracker';
-import Cities from '../../../shared/fixtures/cities.json'
+import Cities from '../../../shared/fixtures/cities.json';
 
 const SetupBusinessDetails = ({ history, location }) => {
     const pathname = location?.state?.from.pathname;
@@ -60,12 +61,13 @@ const SetupBusinessDetails = ({ history, location }) => {
     return (
         <div className="login-screen h-screen lg:flex justify-center items-center px-4 py-1">
             <SideBar />
+            <span className="absolute -left-48 -top-14 w-12"><BarChart /></span>
             <div className='lg:w-5/10 text-center'>
             {loading ?
                 <Loader />
                 : <div className="xl:w-7/10 lg:w-9/12 relative">
 
-                    <div className="shadow-sm p-8 md:p-16 bg-white rounded-lg justify-center">
+                    <div className="shadow-sm p-8 md:p-6 bg-white rounded-lg justify-center">
                         <Formik
                             initialValues={{ username: '', password: '' }}
                             validate={values => {
@@ -101,7 +103,7 @@ const SetupBusinessDetails = ({ history, location }) => {
                                             </div>
                                             <ActivityTracker activityStep={step} />
                                         </div>
-                                        <div className='text-left mb-6'>Tell us about your business</div>
+                                        <div className='text-left mb-4'>Tell us about your business</div>
                                         
 
                                         <div className="mt-4 mb-3 px-1" style={{textAlign:'left'}}>
@@ -132,7 +134,7 @@ const SetupBusinessDetails = ({ history, location }) => {
                                     </div>
                                     
                                     <div className="mt-4 mb-3 lg:flex" style={{textAlign:'left'}}>
-                                    <div className="mt-4 mb-12">
+                                    <div className="mt-4 mb-6">
                                     
                                 </div>
                                 

@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
 import { Formik } from 'formik';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
-import { login } from '../../lib/url.js';
-import { apiRequest, logout } from '../../lib/api.js';
 import { showToast } from '../../helpers/showToast';
+import { apiRequest, logout } from '../../lib/api.js';
+import { login } from '../../lib/url.js';
 import { ReactComponent as BarChart } from '../../shared/assets/bar-chart.svg';
 import Loader from '../../shared/components/Loader';
 import SideBar from '../../shared/components/SideBar';
-import { Link } from 'react-router-dom';
 
 const Login = ({ history, location }) => {
     const pathname = location?.state?.from.pathname;
@@ -120,7 +120,7 @@ const Login = ({ history, location }) => {
                                         Continue
                                     </button>
                                     
-                                    <span className="w-full m-auto py-2 sm:py-2 text-primary"><Link to="/login/merchant-signup">Contact </Link>Don't have an account yet? <strong><a href="login/merchant-signup">Signup</a></strong></span>
+                                    <span className="w-full m-auto py-2 sm:py-2 text-primary">Don't have an account yet? <strong><Link to="/onboarding/merchant-signup">Signup</Link></strong></span>
                                 </form>
                             )}
                         </Formik>
