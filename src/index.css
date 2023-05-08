@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  font-family: Gelion;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@font-face {
+  font-family: 'Gelion';
+  font-style: normal;
+  font-weight: normal;
+  src:
+    local('Gelion Regular'),
+    local('Gelion-Regular'),
+    url(./shared/fonts/Gelion/Gelion-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Gelion';
+  font-style: normal;
+  font-weight: bold;
+  src:
+    local('Gelion Medium'),
+    local('Gelion-Medium'),
+    url(./shared/fonts/Gelion/Gelion-Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Gelion';
+  font-style: normal;
+  font-weight: lighter;
+  src:
+    local('Gelion Light'),
+    local('Gelion-Light'),
+    url(./shared/fonts/Gelion/Gelion-Light.ttf) format('truetype');
+}

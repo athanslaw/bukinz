@@ -1,0 +1,30 @@
+[
+    {
+        "id":"1",
+        "name":"Gubernatorial"
+    },
+    {
+        "id":"2",
+        "name":"Presidential"
+    },
+    {
+        "id":"3",
+        "name":"Senatorial"
+    },
+    {
+        "id":"4",
+        "name":"Federal House of Representative"
+    },
+    {
+        "id":"5",
+        "name":"State House of Assembly"
+    },
+    {
+        "id":"6",
+        "name":"LGA Chairmanship"
+    },
+    {
+        "id":"7",
+        "name":"Councilorship"
+    }
+]
